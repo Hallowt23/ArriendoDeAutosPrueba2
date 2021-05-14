@@ -16,5 +16,17 @@ namespace ArriendoDeAutos
         int lci = cities.Length;
         int rCountry = r.Next(0, lco);
         int rCity = r.Next(0, lci);*/
+
+        public Office(int officeId, String officeAddress, String officeCountry, String officeCity)
+        {
+            id = officeId;
+
+            address = officeAddress;
+
+            country = officeCountry;
+
+            city = officeCity;
+
+        }
     }
 }

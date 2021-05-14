@@ -7,29 +7,25 @@ namespace ArriendoDeAutos
     class Car
     {
         public int id;
+        public double pricePerDay;
+        public String brand, type;
 
-         public String brand;
-
-        public int pricePerDay;
-
-        public String type;
-
-        public Car(int carId, String carBrand, int carPricePerDay, String carType)
+        public Car()
         {
-            id = carId;
-
-            brand = carBrand;
-
-            pricePerDay = carPricePerDay;
-
-            type = carType;
 
         }
+        public Car(int id, String brand, double pricePerDay, String type)
+        {
+            //Car car = new Car(id, brand, pricePerDay, type);
+            id = id;
+            brand = brand;
+            pricePerDay = pricePerDay;
+            type = type;
 
-        /*public String attributo { get; set; } ?? 
-        string[] models = {"Audi", "Toyota", "Hyundai", "Subaru", "Mazda",
-                "Suzuki", "Chevrolet", "Volkswagen", "Volvo"};
-        string[] types = { "Sedan", "SUV", "Wagon", "Pickup", "Sport",
-                "Compat", "Van", "Hatchback" };*/
+        }
+        public void toString()
+        {
+            Console.WriteLine("El vehiculo N°:{0}, {1}, {2}, {3}", id, brand, type, pricePerDay);
+        }
     }
 }
