@@ -22,10 +22,13 @@ namespace ArriendoDeAutos
                 "Ciudad de Mexico", "Madrid", "Roma", "Texas" };
             //Cambiar X y Z 
             int x = 7;
-            int sC = 0;
-            String sO = "";
+            int sC = 100;
+            int sO = 200;
             String z, rT;
             bool t = true;
+            String brand = "";
+            String city = "";
+            double price = 0;
 
             //DataBase
             //Insertar datos para tener autos que arrendar.
@@ -67,6 +70,7 @@ namespace ArriendoDeAutos
                 Console.WriteLine("5-Salir");
                 Console.WriteLine("---------");
 
+                //TODO validador de key*
                 z = Console.ReadLine();
 
                 switch (z)
@@ -83,6 +87,7 @@ namespace ArriendoDeAutos
                         sC = Int32.Parse(Console.ReadLine());
                         break;
 
+
                     case "2":
                         //Vista de oficinas
                         Console.WriteLine("Oficinas donde podra retirar el vehiculo");
@@ -91,58 +96,54 @@ namespace ArriendoDeAutos
                         {
                             Console.WriteLine(obj.id + "- " + obj.country + ", " + obj.city + ", " + obj.address);
                         }
-                        sO = Console.ReadLine();
+                        Console.WriteLine("Escriba el id de la oficina donde retirara el auto");
+                        sO = Int32.Parse(Console.ReadLine());
                         break;
 
 
                     case "3":
                         //Realizar reserva
-                        rT = Console.ReadLine();
+                        for (int i = 0; i < x; i++)
+                        {
+                            //Seteo Auto en Rent
+                            if (cars[i].id == sC)
+                            {
+                                brand = cars[i].brand;
+                                price = cars[i].pricePerDay;
+                            }
+                            else { }
+                            //Seteo Oficina en Rent
+                            if (offices[i].id == sO)
+                            {
+                                city = offices[i].city;
+                            }
+                            else { }
+                            //TODO Setear Rent
+                        }
+                        Console.WriteLine(brand);
+                        Console.WriteLine(city);
+                        //rT = Console.ReadLine();
                         break;
 
 
                     case "4":
-                        //Vista de reservas
-                        //while (t == true)
-                        //{
                         Console.WriteLine("Hello im 4");
-                        for (int i = 0; i < x; i++)
-                            {
-                                
-                                if (cars[i].id == sC) {
-                                    String brand = cars[i].brand;
-                                    double price = cars[i].pricePerDay;
-                                    return;
-                                }
-                                
-                                if (offices[i].city == sO)
-                                {
-                                    Console.WriteLine("pase");
-                                    Console.WriteLine("Entre post return");
-                                    String city = offices[i].city;
-                                    Console.WriteLine(city);
-                                    return;
-                                }
-                            Console.WriteLine(brand);
-                            Console.WriteLine(city);
-                            t = false;
-                            }
-                            
-                        //}
-
                         break;
 
 
                     case "5":
                         x = 0;
-                        Console.WriteLine("Logout");
+                        Console.WriteLine("Cerrando");
+                        Environment.Exit(0);
                         break;
+
 
                     default:
-                        Console.WriteLine("hey!");
+                        Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                        Console.WriteLine("Utilice un numero entre 1 y 5");
+                        Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
                         //x = Int32.Parse(Console.ReadLine());
                         break;
-
                 }
 
             }
