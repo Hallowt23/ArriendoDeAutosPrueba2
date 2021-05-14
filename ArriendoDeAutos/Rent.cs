@@ -6,8 +6,21 @@ namespace ArriendoDeAutos
 {
     public class Rent
     {
-        public int day { get; set; }
-        public String month { get; set; } 
-        public int priceTotal { get; set; }
+        int id, days, priceTotal;
+        String month, brand, city;
+
+        public Rent()
+        {
+
+        }
+        public Rent(int id, int days, String month, String city, String brand, int priceTotal)
+        {
+            id = id;
+            days = days;
+            month = month;
+            city = city;
+            brand = brand;
+            priceTotal = priceTotal;
+        }
     }
 }

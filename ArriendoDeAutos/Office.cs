@@ -6,27 +6,23 @@ namespace ArriendoDeAutos
 {
     public class Office
     {
-        public int id { get; set; }
-        public String address { get; set; }
-        public String city { get; set; }
-        public String country { get; set; }
+        public int id;
+        public String address, city, country;
 
-        /*public bool rentAvailable { get; set; }
-        int lco = countries.Length;
-        int lci = cities.Length;
-        int rCountry = r.Next(0, lco);
-        int rCity = r.Next(0, lci);*/
-
-        public Office(int officeId, String officeAddress, String officeCountry, String officeCity)
+        public Office()
         {
-            id = officeId;
 
-            address = officeAddress;
-
-            country = officeCountry;
-
-            city = officeCity;
-
+        }
+        public Office(int Id, String country, String city, String address)
+        {
+            id = id;
+            country = country;
+            city = city;
+            address = address;
+        }
+        public void toString()
+        {
+            Console.WriteLine("Oficina N°:{0}, ubicada en: {1}, {2}, {3}", id, country, city, address);
         }
     }
 }

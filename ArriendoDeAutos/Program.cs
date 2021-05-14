@@ -8,6 +8,7 @@ namespace ArriendoDeAutos
     {
         static void Main(string[] args)
         {
+            //Data / Instancias
             Random r = new Random();
             List<Car> cars = new List<Car>();
             List<Office> offices = new List<Office>();
@@ -19,52 +20,131 @@ namespace ArriendoDeAutos
                 "Spain", "Italy", "United states" };
             string[] cities = { "Santiago", "Sao paulo", "Buenos Aires",
                 "Ciudad de Mexico", "Madrid", "Roma", "Texas" };
-            int x = 0;
-            for (int i = 0; i < 5; i++)
+            //Cambiar X y Z 
+            int x = 7;
+            int sC = 0;
+            String sO = "";
+            String z, rT;
+            bool t = true;
+
+            //DataBase
+            //Insertar datos para tener autos que arrendar.
+            for (int i = 0; i < x; i++)
             {
-                Car rentCar = new Car();
+                Car car = new Car();
                 int lb = brands.Length;
                 int lt = types.Length;
                 int rp = r.Next(1, 5);
                 int rBrand = r.Next(0, lb);
                 int rType = r.Next(0, lt);
-                rentCar.id = i;
-                rentCar.brand = brands[rBrand];
-                rentCar.type = types[rType];
+                car.id = i;
+                car.brand = brands[rBrand];
+                car.type = types[rType];
                 int range = 8000;
-                rentCar.pricePerDay = range * rp;
-                //cars.Add(new Car(rentCar.id, rentCar.brand, rentCar.pricePerDay, rentCar.type));
-                cars.Add(rentCar);
+                car.pricePerDay = range * rp;
+                cars.Add(car);
                 //rentCar.toString();
-
             }
-            foreach (var obj in cars)
+            //Insertar datos para seleccionar una oficina donde arrendar.
+            for (int i = 0; i < x; i++)
             {
-                Console.WriteLine(obj.id + ", " + obj.brand + ", " + obj.type + ", " + obj.pricePerDay);
-                
-                //Console.Write();
-            }
-
-            /*
-            for (int i = 0; i < 5; i++)
-            {
-                int x = 0;
-                String t = "hola";
-                Office office = new Office(x, t,  t, t);
+                Office office = new Office();
                 office.id = i;
                 office.country = countries[i];
                 office.city = cities[i];
                 int range = (i + 3) * 570;
-                office.address = office.country + ", " + office.city + ", " + range;
-                Console.WriteLine(office.address);
+                office.address =  "Hertz.rd " + range;
+                offices.Add(office);
+            }
 
-                Console.ReadLine();
-                //var dump = ObjectDumper.Dump(office);
-            }*/
-            while (x == 0)
+            while (x != 5)
             {
-                x = 1;
-                Console.WriteLine("Bye!");
+                Console.WriteLine("---Menu---");
+                Console.WriteLine("1-Seleccionar Auto");
+                Console.WriteLine("2-Seleccionar Oficina");
+                Console.WriteLine("3-Realizar Reserva");
+                Console.WriteLine("4-Ver Reserva");
+                Console.WriteLine("5-Salir");
+                Console.WriteLine("---------");
+
+                z = Console.ReadLine();
+
+                switch (z)
+                {
+                    case "1":
+                        //Vista de autos
+                        Console.WriteLine("Autos disponibles");
+                        Console.WriteLine("Id / Marca / Tipo / Precio por dia");
+                        foreach (var obj in cars)
+                        {
+                            Console.WriteLine(obj.id + "- " + obj.brand + ", " + obj.type + ", " + obj.pricePerDay);
+                        }
+                        Console.WriteLine("Escriba el id del auto que desea arrendar");
+                        sC = Int32.Parse(Console.ReadLine());
+                        break;
+
+                    case "2":
+                        //Vista de oficinas
+                        Console.WriteLine("Oficinas donde podra retirar el vehiculo");
+                        Console.WriteLine("Id / Pais / Ciudad / Direccion");
+                        foreach (var obj in offices)
+                        {
+                            Console.WriteLine(obj.id + "- " + obj.country + ", " + obj.city + ", " + obj.address);
+                        }
+                        sO = Console.ReadLine();
+                        break;
+
+
+                    case "3":
+                        //Realizar reserva
+                        rT = Console.ReadLine();
+                        break;
+
+
+                    case "4":
+                        //Vista de reservas
+                        //while (t == true)
+                        //{
+                        Console.WriteLine("Hello im 4");
+                        for (int i = 0; i < x; i++)
+                            {
+                                
+                                if (cars[i].id == sC) {
+                                    String brand = cars[i].brand;
+                                    double price = cars[i].pricePerDay;
+                                    return;
+                                }
+                                
+                                if (offices[i].city == sO)
+                                {
+                                    Console.WriteLine("pase");
+                                    Console.WriteLine("Entre post return");
+                                    String city = offices[i].city;
+                                    Console.WriteLine(city);
+                                    return;
+                                }
+                            Console.WriteLine(brand);
+                            Console.WriteLine(city);
+                            t = false;
+                            }
+                            
+                        //}
+
+                        break;
+
+
+                    case "5":
+                        x = 0;
+                        Console.WriteLine("Logout");
+                        break;
+
+                    default:
+                        Console.WriteLine("hey!");
+                        //x = Int32.Parse(Console.ReadLine());
+                        break;
+
+                }
+
             }
         } 
     }

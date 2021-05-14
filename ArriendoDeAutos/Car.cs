@@ -21,11 +21,10 @@ namespace ArriendoDeAutos
             brand = brand;
             pricePerDay = pricePerDay;
             type = type;
-
         }
         public void toString()
         {
-            Console.WriteLine("El vehiculo N°:{0}, {1}, {2}, {3}", id, brand, type, pricePerDay);
+            Console.WriteLine("El vehiculo N°:{0}, marca: {1}, {2}, tiene un valor de: {3}, por día.", id, brand, type, pricePerDay);
         }
     }
 }
