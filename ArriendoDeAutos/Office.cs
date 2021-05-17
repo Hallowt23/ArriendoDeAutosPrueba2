@@ -10,12 +10,10 @@ namespace ArriendoDeAutos
         private String address { get; set; }
         private String city { get; set; }
         private String country { get; set; }
-
         public static string[] countries = { "Chile", "Brazil", "Argentina", "Mexico",
                 "Spain", "Italy", "United states" };
         public static string[] cities = { "Santiago", "Sao paulo", "Buenos Aires",
                 "Ciudad de Mexico", "Madrid", "Roma", "Texas" };
-
         public Office()
         {
 

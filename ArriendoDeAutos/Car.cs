@@ -11,12 +11,10 @@ namespace ArriendoDeAutos
         private double pricePerDay { get; set; }
         private String brand { get; set; }
         private String type { get; set; }
-
         static string[] brands = {"Audi", "Toyota", "Hyundai", "Subaru", "Mazda", "Mercedez Benz",
                 "Suzuki", "Chevrolet", "Volkswagen", "Volvo", "Ford", "BMW", "Nissan"};
         static string[] types = { "Sedan", "SUV", "Wagon", "Pickup", "Sport", "Roadster",
                 "Compat", "Van", "Hatchback", "Urban", "Coupe", "Crossover" };
-
         public Car()
         {
 

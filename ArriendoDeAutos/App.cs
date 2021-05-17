@@ -18,23 +18,29 @@ namespace ArriendoDeAutos
             String key, rentTicket;
             bool app = true;
 
-
+            Console.WriteLine("--Cargando Datos--");
+            System.Threading.Thread.Sleep(1500);
             //Database
             //Insertar datos para tener autos que arrendar.
             for (int i = 0; i < iterator; i++)
             {
                 var car = Car.DataCar(i);
                 cars.Add(car);
-                car.ToString();
+                //car.ToString();
+                if (i < 7)
+                {
+                    var office = Office.DataOffice(i);
+                    offices.Add(office);
+                    //office.ToString();
+                }
+                Console.Clear();
+                int z = i * 3;
+                Console.Write(z + "%");
+                int x = 10;
+                System.Threading.Thread.Sleep(x);
             }
-
-            //Insertar datos para seleccionar una oficina donde arrendar.
-            for (int i = 0; i < 7; i++)
-            {
-                var office = Office.DataOffice(i);
-                offices.Add(office);
-                office.ToString();
-            }
+            Console.WriteLine("--Hertz.Console--");
+            Console.WriteLine("--TFM@LAN@ArriendoDeAutos@Prueba2--");
 
             while (app)
             {
@@ -140,6 +146,6 @@ namespace ArriendoDeAutos
                
 
             }
-        } 
+        }
     }
 }
