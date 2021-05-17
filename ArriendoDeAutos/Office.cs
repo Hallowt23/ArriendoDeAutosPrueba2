@@ -6,23 +6,39 @@ namespace ArriendoDeAutos
 {
     public class Office
     {
-        public int id;
-        public String address, city, country;
+        private int id { get; set; }
+        private String address { get; set; }
+        private String city { get; set; }
+        private String country { get; set; }
+
+        public static string[] countries = { "Chile", "Brazil", "Argentina", "Mexico",
+                "Spain", "Italy", "United states" };
+        public static string[] cities = { "Santiago", "Sao paulo", "Buenos Aires",
+                "Ciudad de Mexico", "Madrid", "Roma", "Texas" };
 
         public Office()
         {
 
         }
-        public Office(int Id, String country, String city, String address)
+        public Office(int officeId, String officeCountry, String officeCity, String officeAddress)
         {
-            id = id;
-            country = country;
-            city = city;
-            address = address;
+            id = officeId;
+            country = officeCountry;
+            city = officeCity;
+            address = officeAddress;
         }
-        public void toString()
+        public static Office DataOffice(int index)
         {
-            Console.WriteLine("Oficina N°:{0}, ubicada en: {1}, {2}, {3}", id, country, city, address);
+            Office office = new Office();
+            int range = (index + 3) * 570;
+            String address = "Hertz.rd " + range;
+            office = new Office(index, countries[index], cities[index], address);
+            return office;
+        }
+        public override string ToString()
+        {
+            string toString = "Id: " + id + " | Pais: " + country + " | Ciudad: " + city + " | Direccion: " + address;
+            return toString;
         }
     }
 }

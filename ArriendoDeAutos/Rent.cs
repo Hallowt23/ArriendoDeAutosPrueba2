@@ -22,5 +22,16 @@ namespace ArriendoDeAutos
             brand = brand;
             priceTotal = priceTotal;
         }
+
+        public double valorTotal(double price, int days)
+        {
+            double x = price * days;
+            return x;
+        }
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
     }
 }
