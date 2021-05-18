@@ -6,10 +6,10 @@ namespace ArriendoDeAutos
 {
     public class Office
     {
-        private int id { get; set; }
-        private String address { get; set; }
-        private String city { get; set; }
-        private String country { get; set; }
+        public int id { get; set; }
+        public String address { get; set; }
+        public String city { get; set; }
+        public String country { get; set; }
         public static string[] countries = { "Chile", "Brazil", "Argentina", "Mexico",
                 "Spain", "Italy", "United states" };
         public static string[] cities = { "Santiago", "Sao paulo", "Buenos Aires",

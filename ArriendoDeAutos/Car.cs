@@ -7,10 +7,10 @@ namespace ArriendoDeAutos
     class Car
     {
         static Random r = new Random();
-        private int id { get; set; }
-        private double pricePerDay { get; set; }
-        private String brand { get; set; }
-        private String type { get; set; }
+        public int id { get; set; }
+        public double pricePerDay { get; set; }
+        public String brand { get; set; }
+        public String type { get; set; }
         static string[] brands = {"Audi", "Toyota", "Hyundai", "Subaru", "Mazda", "Mercedez Benz",
                 "Suzuki", "Chevrolet", "Volkswagen", "Volvo", "Ford", "BMW", "Nissan"};
         static string[] types = { "Sedan", "SUV", "Wagon", "Pickup", "Sport", "Roadster",
@@ -41,6 +41,10 @@ namespace ArriendoDeAutos
         {
             string toString = "Id: " + id + " | Marca: " + brand + " | Tipo: " +type + " | Valor: " + pricePerDay + " por día.";
             return toString;
+        }
+        public Car IsNullOrEmpty(Car car)
+        {
+            return car;
         }
     }
 }
