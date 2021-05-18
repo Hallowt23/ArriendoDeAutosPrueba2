@@ -8,23 +8,22 @@ namespace ArriendoDeAutos
     {
         static void Main(string[] args)
         {
-
-            //Data / Instancias
+            //TODO validador de key y rut
+            //Variables / Instancias
             Random r = new Random();
             List<Car> cars = new List<Car>();
             List<Office> offices = new List<Office>();
             Reservation rev = null;
             Car selectedCar = null;
             Office selectedOffice = null;
+            int key;
             int iterator = 30;
-            int ammount = 0;
             int rut = 0;
-            int key = 0;
             bool app = true;
             bool login = false;
             String mAL = "";
 
-            //Database / Loading
+            //"Database" Loading
             Console.WriteLine("<Lan>");
             Console.WriteLine("--Cargando Datos--");
             Console.WriteLine("</Lan>");
@@ -66,8 +65,6 @@ namespace ArriendoDeAutos
                 }
                 try
                 {
-                    //TODO validador de key y rut
-                    //Console.WriteLine("--Ingrese su Rut--");
                     if (login == false)
                     {
                         Console.Clear();
@@ -84,7 +81,7 @@ namespace ArriendoDeAutos
                         switch (key)
                         {
                             case 1:
-                                //Vista de autos
+                                //Vista seleccion de auto
                                 Console.Clear();
                                 Console.WriteLine("--Autos Disponibles--");
                                 Console.WriteLine("Seleccione una opcion");
@@ -92,7 +89,6 @@ namespace ArriendoDeAutos
                                 key = Int32.Parse(Console.ReadLine());
                                 try
                                 {
-                                    
                                     Car LINQ = new Car();
                                     switch (key)
                                     {
@@ -123,9 +119,8 @@ namespace ArriendoDeAutos
                                 Console.ReadLine();
                                 break;
 
-
                             case 2:
-                                //Vista de oficinas
+                                //Vista seleccion de oficina
                                 Console.Clear();
                                 Console.WriteLine("--Oficinas Hertz--");
                                 foreach (var obj in offices)
@@ -140,9 +135,8 @@ namespace ArriendoDeAutos
                                 Console.ReadLine();
                                 break;
 
-                            
                             case 3:
-                                //Vista de reserva
+                                //Vista gestion de reserva
                                 Console.Clear();
                                 if ( selectedCar == null || selectedOffice == null )
                                 {
@@ -156,9 +150,8 @@ namespace ArriendoDeAutos
                                 Console.ReadLine();
                                 break;
                             
-
                             case 4:
-                                //Vista de la informacion de reserva
+                                //Vista de la reserva (Boleta/Ticket)
                                 Console.Clear();
                                 if ( rev == null )
                                 {
@@ -172,12 +165,14 @@ namespace ArriendoDeAutos
                                 break;
 
                             case 5:
+                                //Cerrar App
                                 app = false;
                                 Console.WriteLine("--Cerrando--");
                                 Environment.Exit(0);
                                 break;
 
                             case 6:
+                                //Logout
                                 login = false;
                                 break;
 
@@ -189,7 +184,6 @@ namespace ArriendoDeAutos
                                 break;
                         }
                     }
-
                 } catch (InvalidCastException e) {
                     Console.WriteLine(e);
                 }

@@ -33,8 +33,8 @@ namespace ArriendoDeAutos
             Car car = new Car();
             int rBrand = r.Next(0, brands.Length);
             int rType = r.Next(0, types.Length);
-            int rangePrice = r.Next(1, 7);
-            int basePrice = 8251;
+            int rangePrice = r.Next(1, 9);
+            int basePrice = 6350;
             int price = basePrice * rangePrice;
             car = new Car(index, brands[rBrand], price, types[rType]);
             cars.Add(car);
