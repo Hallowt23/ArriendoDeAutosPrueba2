@@ -6,9 +6,9 @@ namespace ArriendoDeAutos
 {
     class App
     {
+        //TODO validador de key y rut
         static void Main(string[] args)
         {
-            //TODO validador de key y rut
             //Variables / Instancias
             Random r = new Random();
             List<Car> cars = new List<Car>();
@@ -67,17 +67,19 @@ namespace ArriendoDeAutos
                 {
                     if (login == false)
                     {
+
                         Console.Clear();
+                        Console.WriteLine("** Identificacion de usuario **");
                         Console.WriteLine("** Ingrese Rut **");
-                        rut = Int32.Parse(Console.ReadLine());
+                        rut = Optimize.ValInt();
                         Console.WriteLine("** Ingrese Iniciales **");
-                        mAL = Console.ReadLine();
+                        mAL = Optimize.ValString();
                         login = true;
                     } else
                     {
                         Console.WriteLine("");
                         Console.WriteLine("Seleccione una opcion");
-                        key = Int32.Parse(Console.ReadLine());
+                        key = Optimize.ValInt();
                         switch (key)
                         {
                             case 1:
@@ -112,7 +114,7 @@ namespace ArriendoDeAutos
                                     Console.WriteLine(e);
                                 }
                                 Console.WriteLine("--Escriba el Id del auto que desea arrendar--");
-                                key = Int32.Parse(Console.ReadLine());
+                                key = Optimize.ValInt();
                                 Console.WriteLine("--Auto agregado--");
                                 Console.WriteLine(cars[key].ToString());
                                 selectedCar = cars[key];
@@ -128,7 +130,7 @@ namespace ArriendoDeAutos
                                     Console.WriteLine(obj.ToString());
                                 }
                                 Console.WriteLine("--Escriba el Id de la oficina donde retirara el auto-");
-                                key = Int32.Parse(Console.ReadLine());
+                                key = Optimize.ValInt();
                                 Console.WriteLine("--Oficina agregada--");
                                 Console.WriteLine(offices[key].ToString());
                                 selectedOffice = offices[key];

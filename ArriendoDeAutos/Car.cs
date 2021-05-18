@@ -6,7 +6,8 @@ using System.Text;
 namespace ArriendoDeAutos
 {
     class Car
-    {
+    { 
+        //Atributos publicos para agilizar el codigo. En una version 2.0 estaran privados
         public static List<Car> cars = new List<Car>();
         static Random r = new Random();
         public int id { get; set; }
@@ -33,8 +34,8 @@ namespace ArriendoDeAutos
             Car car = new Car();
             int rBrand = r.Next(0, brands.Length);
             int rType = r.Next(0, types.Length);
-            int rangePrice = r.Next(1, 9);
-            int basePrice = 6350;
+            int rangePrice = r.Next(1,11);
+            int basePrice = 9150;
             int price = basePrice * rangePrice;
             car = new Car(index, brands[rBrand], price, types[rType]);
             cars.Add(car);
@@ -75,7 +76,7 @@ namespace ArriendoDeAutos
         public void LinqAmmount()
         {
             Console.WriteLine("Valor Menor a");
-            int ammount = Int32.Parse(Console.ReadLine());
+            int ammount = Optimize.ValInt();
             var queryPBase = from car in cars
                              where car.pricePerDay <= ammount
                              orderby car.id

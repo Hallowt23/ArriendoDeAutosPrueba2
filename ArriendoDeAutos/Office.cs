@@ -6,6 +6,7 @@ namespace ArriendoDeAutos
 {
     public class Office
     {
+        //Atributos publicos para agilizar el codigo. En una version 2.0 estaran privados
         public int id { get; set; }
         public String address { get; set; }
         public String city { get; set; }

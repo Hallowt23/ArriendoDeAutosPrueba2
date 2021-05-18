@@ -6,6 +6,7 @@ namespace ArriendoDeAutos
 {
     public class Reservation
     {
+        //Atributos publicos para agilizar el codigo. En una version 2.0 estaran privados
         public int id { get; set; }
         public int days { get; set; }
         public int bill{ get; set;}
