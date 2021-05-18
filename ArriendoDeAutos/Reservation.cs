@@ -8,7 +8,7 @@ namespace ArriendoDeAutos
     {
         public int id { get; set; }
         public int days { get; set; }
-        public double bill{ get; set;}
+        public int bill{ get; set;}
         public String month { get; set; }
         public String brand { get; set;}
         public String city { get; set;}
@@ -20,34 +20,34 @@ namespace ArriendoDeAutos
         {
 
         }
-        public Reservation(int rId, int rDays, String rMonth, String rCity, String rBrand, double rPriceTotal)
+        public Reservation(int rId, int rDays, String rMonth, String rCity, String rBrand, int rPriceTotal)
         {
             id = rId;
             days = rDays;
             month = rMonth;
             city = rCity;
             brand = rBrand;
-            bill = Billing(rPriceTotal, rDays);
+            bill = rPriceTotal;
         }
-        public double Billing(double price, int days)
+        public int Billing(int price, int days)
         {
-            double bill = price * days;
+            int bill = price * days;
             return bill;
         }
-        public static Reservation MakeReservation(int rId, String rCity, String rBrand, double rPrice)
+        public static Reservation MakeReservation(int rId, String rCity, String rBrand, int rPrice)
         {
             Reservation rev = new Reservation();
             Console.WriteLine("Cuantos dias quiere arrendar");
             int days = Int32.Parse(Console.ReadLine());
             Console.WriteLine("En que mes realizara el arriendo");
             String month = Console.ReadLine();
-            double bill =  rev.Billing(rPrice, days);
+            int bill =  rev.Billing(rPrice, days);
             rev = new Reservation(rId, days, month, rCity, rBrand, bill);
             return rev;
         }
         public override string ToString()
         {
-            string toString = "Id: " + id + " | Dias: " + days + " | Mes: " + month +  " | Ciudad: " + city + " | Marca: " + brand + " | Valor: " + Math.Round(bill);
+            string toString = "Id: " + id + " | Dias: " + days + " | Mes: " + month +  " | Ciudad: " + city + " | Marca: " + brand + " | Valor: " + Convert.ToInt32(bill);
             return toString;
         }
     }

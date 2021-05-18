@@ -8,6 +8,7 @@ namespace ArriendoDeAutos
     {
         static void Main(string[] args)
         {
+
             //Data / Instancias
             Random r = new Random();
             List<Car> cars = new List<Car>();
@@ -20,13 +21,14 @@ namespace ArriendoDeAutos
             int rut = 0;
             int key = 0;
             bool app = true;
-            //TODO CUANDO ESTE LISTO --> False
-            bool login = true;
+            bool login = false;
             String mAL = "";
 
-            Console.WriteLine("--Cargando Datos--");
-            System.Threading.Thread.Sleep(1250);
             //Database / Loading
+            Console.WriteLine("<Lan>");
+            Console.WriteLine("--Cargando Datos--");
+            Console.WriteLine("</Lan>");
+            System.Threading.Thread.Sleep(1250);
             for (int i = 0; i < iterator; i++)
             {
                 var car = Car.DataCar(i);
@@ -41,7 +43,7 @@ namespace ArriendoDeAutos
                 Console.Write(z + "%");
                 System.Threading.Thread.Sleep(10);
             }
-            Console.WriteLine("--Hertz.Console--");
+            Console.WriteLine("--Hertz.ConsoleApp--");
             Console.WriteLine("--TomasFernandez@ArriendoDeAutos@Prueba2--");
 
             while (app)
@@ -68,65 +70,54 @@ namespace ArriendoDeAutos
                     //Console.WriteLine("--Ingrese su Rut--");
                     if (login == false)
                     {
-                        Console.WriteLine("Ingrese Rut");
+                        Console.Clear();
+                        Console.WriteLine("** Ingrese Rut **");
                         rut = Int32.Parse(Console.ReadLine());
-                        Console.WriteLine("Ingrese iniciales");
+                        Console.WriteLine("** Ingrese Iniciales **");
                         mAL = Console.ReadLine();
                         login = true;
                     } else
                     {
+                        Console.WriteLine("");
                         Console.WriteLine("Seleccione una opcion");
                         key = Int32.Parse(Console.ReadLine());
                         switch (key)
                         {
-
                             case 1:
-                                
                                 //Vista de autos
+                                Console.Clear();
                                 Console.WriteLine("--Autos Disponibles--");
                                 Console.WriteLine("Seleccione una opcion");
-                                //key = Int32.Parse(Console.ReadLine());
-
-                                //Modulo LINQ
-                                Console.WriteLine("1-Valor Descendiente");
-                                var queryDe = from car in cars
-                                    orderby car.pricePerDay descending
-                                    select car;
-                                foreach (var obj in queryDe)
-                                {
-                                    Console.WriteLine(obj.ToString());
-                                }
-
-                                Console.WriteLine("2-Valor Ascendiente");
-                                var queryAsc = from car in cars
-                                              orderby car.pricePerDay descending
-                                              select car;
-                                foreach (var obj in queryAsc)
-                                {
-                                    Console.WriteLine(obj.ToString());
-                                }
-
-                                Console.WriteLine("3-Valor Desde");
-                                ammount = Int32.Parse(Console.ReadLine());
-                                var queryPBase = from car in cars
-                                              where car.pricePerDay >= ammount
-                                              orderby car.pricePerDay descending
-                                              select (car);
-                                foreach (var obj in queryPBase)
-                                {
-                                    Console.WriteLine(obj.ToString());
-                                }
-
-                                Console.WriteLine("4-Todos los Autos");
-                                foreach (var obj in cars)
-                                {
-                                    Console.WriteLine(obj.ToString());
-                                }
-
-
-                                Console.WriteLine("--Seleccione por id su auto--");
+                                Console.WriteLine("1-Precio Descendiente | 2-Precio Ascendiente | 3-Precio Desde | 4-Lista completa");
                                 key = Int32.Parse(Console.ReadLine());
-                                Console.WriteLine("--Auto seleccionado--");
+                                try
+                                {
+                                    
+                                    Car LINQ = new Car();
+                                    switch (key)
+                                    {
+                                        case 1:
+                                            LINQ.LinqDescending();
+                                            break;
+                                        case 2:
+                                            LINQ.LinqAscending();
+                                            break;
+                                        case 3:
+                                            LINQ.LinqAmmount();
+                                            break;
+                                        case 4:
+                                            LINQ.ListView();
+                                            break;
+                                        default:
+                                            return;
+                                    }
+                                } catch (InvalidCastException e)
+                                {
+                                    Console.WriteLine(e);
+                                }
+                                Console.WriteLine("--Escriba el Id del auto que desea arrendar--");
+                                key = Int32.Parse(Console.ReadLine());
+                                Console.WriteLine("--Auto agregado--");
                                 Console.WriteLine(cars[key].ToString());
                                 selectedCar = cars[key];
                                 Console.ReadLine();
@@ -135,14 +126,15 @@ namespace ArriendoDeAutos
 
                             case 2:
                                 //Vista de oficinas
+                                Console.Clear();
                                 Console.WriteLine("--Oficinas Hertz--");
                                 foreach (var obj in offices)
                                 {
                                     Console.WriteLine(obj.ToString());
                                 }
-                                Console.WriteLine("--Selecciona por id una oficina-");
+                                Console.WriteLine("--Escriba el Id de la oficina donde retirara el auto-");
                                 key = Int32.Parse(Console.ReadLine());
-                                Console.WriteLine("--Auto seleccionado--");
+                                Console.WriteLine("--Oficina agregada--");
                                 Console.WriteLine(offices[key].ToString());
                                 selectedOffice = offices[key];
                                 Console.ReadLine();
@@ -151,10 +143,11 @@ namespace ArriendoDeAutos
                             
                             case 3:
                                 //Vista de reserva
+                                Console.Clear();
                                 if ( selectedCar == null || selectedOffice == null )
                                 {
-                                    Console.WriteLine("No hay Autos o Officina seleccionada");
-                                    System.Threading.Thread.Sleep(500);
+                                    Console.WriteLine("No hay Auto o Officina seleccionada");
+                                    System.Threading.Thread.Sleep(750);
                                     break;
                                 }
                                 rev = Reservation.MakeReservation(rut, selectedOffice.city, selectedCar.brand, selectedCar.pricePerDay);
@@ -166,15 +159,17 @@ namespace ArriendoDeAutos
 
                             case 4:
                                 //Vista de la informacion de reserva
-                                Console.WriteLine("La informacion de su reserva es la siguiente");
+                                Console.Clear();
                                 if ( rev == null )
                                 {
+                                    Console.WriteLine("No ha generado ninguna reserva");
+                                    System.Threading.Thread.Sleep(750);
                                     break;
                                 }
-                                rev.ToString();
+                                Console.WriteLine("La informacion de su reserva es la siguiente");
+                                Console.WriteLine(rev.ToString());
                                 Console.ReadLine();
                                 break;
-
 
                             case 5:
                                 app = false;
@@ -186,23 +181,18 @@ namespace ArriendoDeAutos
                                 login = false;
                                 break;
 
-
                             default:
-                                Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                                Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
                                 Console.WriteLine("Utilice un numero entre 1 y 5");
-                                Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-                                //x = Int32.Parse(Console.ReadLine());
+                                Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                                System.Threading.Thread.Sleep(750);
                                 break;
                         }
                     }
 
-
                 } catch (InvalidCastException e) {
-
-                    
+                    Console.WriteLine(e);
                 }
-               
-
             }
         }
     }

@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ArriendoDeAutos
 {
     class Car
     {
+        public static List<Car> cars = new List<Car>();
         static Random r = new Random();
         public int id { get; set; }
-        public double pricePerDay { get; set; }
+        public int pricePerDay { get; set; }
         public String brand { get; set; }
         public String type { get; set; }
         static string[] brands = {"Audi", "Toyota", "Hyundai", "Subaru", "Mazda", "Mercedez Benz",
@@ -19,7 +21,7 @@ namespace ArriendoDeAutos
         {
 
         }
-        public Car(int carId, String carBrand, double carPricePerDay, String carType)
+        public Car(int carId, String carBrand, int carPricePerDay, String carType)
         {
             id = carId;
             brand = carBrand;
@@ -32,9 +34,10 @@ namespace ArriendoDeAutos
             int rBrand = r.Next(0, brands.Length);
             int rType = r.Next(0, types.Length);
             int rangePrice = r.Next(1, 7);
-            int basePrice = 8250;
-            double price = basePrice * rangePrice;
+            int basePrice = 8251;
+            int price = basePrice * rangePrice;
             car = new Car(index, brands[rBrand], price, types[rType]);
+            cars.Add(car);
             return car;
         }
         public override string ToString()
@@ -45,6 +48,49 @@ namespace ArriendoDeAutos
         public Car IsNullOrEmpty(Car car)
         {
             return car;
+        }
+        //LINQ
+        public void LinqDescending()
+        {
+            Console.WriteLine("Valores Descendientes");
+            var queryDe = from car in cars
+                          orderby car.pricePerDay descending
+                          select car;
+            foreach (var obj in queryDe)
+            {
+                Console.WriteLine(obj.ToString());
+            }
+        }
+        public void LinqAscending()
+        {
+            Console.WriteLine("Valores Ascendientes");
+            var queryAsc = from car in cars
+                           orderby car.pricePerDay ascending
+                           select car;
+            foreach (var obj in queryAsc)
+            {
+                Console.WriteLine(obj.ToString());
+            }
+        }
+        public void LinqAmmount()
+        {
+            Console.WriteLine("Valor Menor a");
+            int ammount = Int32.Parse(Console.ReadLine());
+            var queryPBase = from car in cars
+                             where car.pricePerDay <= ammount
+                             orderby car.id
+                             select (car);
+            foreach (var obj in queryPBase)
+            {
+                Console.WriteLine(obj.ToString());
+            }
+        }
+        public void ListView()
+        {
+            foreach (var obj in cars)
+            {
+                Console.WriteLine(obj.ToString());
+            }
         }
     }
 }
