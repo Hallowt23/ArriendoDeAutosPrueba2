@@ -6,8 +6,8 @@ using System.Text;
 namespace ArriendoDeAutos
 {
     class Car
-    { 
-        //TODO Atributos publicos para agilizar el codigo. En una version 2.0 estaran privados
+    {
+        //TODO Atributos publicos para agilizar el codigo. En una version 2.0 estaran privados para cumplir con buenas practicas
         public static List<Car> cars = new List<Car>();
         static Random r = new Random();
         public int id { get; set; }
