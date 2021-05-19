@@ -7,7 +7,7 @@ namespace ArriendoDeAutos
 {
     class Car
     { 
-        //Atributos publicos para agilizar el codigo. En una version 2.0 estaran privados
+        //TODO Atributos publicos para agilizar el codigo. En una version 2.0 estaran privados
         public static List<Car> cars = new List<Car>();
         static Random r = new Random();
         public int id { get; set; }

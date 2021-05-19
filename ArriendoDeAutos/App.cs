@@ -6,7 +6,6 @@ namespace ArriendoDeAutos
 {
     class App
     {
-        //TODO validador de key y rut
         static void Main(string[] args)
         {
             //Variables / Instancias
@@ -67,18 +66,17 @@ namespace ArriendoDeAutos
                 {
                     if (login == false)
                     {
-
                         Console.Clear();
-                        Console.WriteLine("** Identificacion de usuario **");
-                        Console.WriteLine("** Ingrese Rut **");
+                        Console.WriteLine("--Identificacion de usuario--");
+                        Console.WriteLine("-- Ingrese Rut --");
                         rut = Optimize.ValInt();
-                        Console.WriteLine("** Ingrese Iniciales **");
+                        Console.WriteLine("-- Ingrese Iniciales --");
                         mAL = Optimize.ValString();
                         login = true;
                     } else
                     {
                         Console.WriteLine("");
-                        Console.WriteLine("Seleccione una opcion");
+                        Console.WriteLine("Seleccione una opcion:");
                         key = Optimize.ValInt();
                         switch (key)
                         {
@@ -86,8 +84,8 @@ namespace ArriendoDeAutos
                                 //Vista seleccion de auto
                                 Console.Clear();
                                 Console.WriteLine("--Autos Disponibles--");
-                                Console.WriteLine("Seleccione una opcion");
-                                Console.WriteLine("1-Precio Descendiente | 2-Precio Ascendiente | 3-Precio Desde | 4-Lista completa");
+                                Console.WriteLine("--Visualizacion por Precio--");
+                                Console.WriteLine("1-Descendiente | 2-Ascendiente | 3-Desde | 4-Lista completa");
                                 key = Int32.Parse(Console.ReadLine());
                                 try
                                 {
@@ -142,7 +140,7 @@ namespace ArriendoDeAutos
                                 Console.Clear();
                                 if ( selectedCar == null || selectedOffice == null )
                                 {
-                                    Console.WriteLine("No hay Auto o Officina seleccionada");
+                                    Console.WriteLine("**No hay Auto o Officina seleccionada**");
                                     System.Threading.Thread.Sleep(750);
                                     break;
                                 }
@@ -157,12 +155,15 @@ namespace ArriendoDeAutos
                                 Console.Clear();
                                 if ( rev == null )
                                 {
-                                    Console.WriteLine("No ha generado ninguna reserva");
+                                    Console.WriteLine("**No ha generado ninguna reserva**");
                                     System.Threading.Thread.Sleep(750);
                                     break;
                                 }
-                                Console.WriteLine("La informacion de su reserva es la siguiente");
+                                Console.WriteLine("--La informacion de su reserva es la siguiente--");
                                 Console.WriteLine(rev.ToString());
+                                Console.WriteLine("--Proximamente: Gestionar mas reservas--");
+                                Console.WriteLine("--Proximamente: Especificar fechas de entrada y salida--");
+                                Console.WriteLine("--Proximamente: Consulta sobre sus reservas previas--");
                                 Console.ReadLine();
                                 break;
 
@@ -180,7 +181,7 @@ namespace ArriendoDeAutos
 
                             default:
                                 Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-                                Console.WriteLine("Utilice un numero entre 1 y 5");
+                                Console.WriteLine("Utilice un numero entre 1 y 6");
                                 Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
                                 System.Threading.Thread.Sleep(750);
                                 break;

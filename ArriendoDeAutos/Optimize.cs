@@ -30,7 +30,7 @@ namespace ArriendoDeAutos
                 try
                 {
                     text = Console.ReadLine();
-                    text.ToUpper();
+                    text = text.ToUpper();
                 }
                 catch (Exception)
                 {
